@@ -3,11 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <meta name="google-signin-client_id" content="1079955819525-jqvjkaahplco8098s12agh40k3ja9cff.apps.googleusercontent.com">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News of Everything</title>
+    <title>NOE</title>
+    <style>
+        #loginPage { max-width: 400px; }
+        #registerPage { max-width: 400px; }
+    </style>
 </head>
 <body>
+    <div class="text-center container">
+
+        <nav class="navbar navbar-light" aria-label="Main navigation">
+            <a class="navbar-brand text-dark" href="index.html">
+                <h1 class="text-center">NOE</small></h1>
+                <h2 class="small">News of Everything</h2>
+            </a>
+            <div id="navbar">
+                <ul class="navbar-nav container">
+                    <li class="nav-item">
+                        <button type="button" id="btnLogout" class="btn btn-dark" onclick="logout()">Logout</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     
+        <section id="mainPage">
+            <h1>MASUK PAK EKO!</h1>
+            <p>Berhasil login</p>
+        </section>
+    
+        <section id="loginRegister">
+            <div id="registerPage" class="container">
+                <h2 class="h3 mb-3 font-weight-normal">Register here</h2>
+                <form id="registerForm" onsubmit="register(event)">
+                    <label for="email">Email: </label><br>
+                    <small>Please type in a valid email address</small>
+                    <input type="email" name="email" id="emailRegister"class="form-control" required autofocus><br>
+                    <label for="password">Password: </label><br>
+                    <small>Password must be longer than 8 characters</small>
+                    <input type="password" name="password" id="passwordRegister"class="form-control" required><br>
+    
+                    <small>or sign in with your google account</small><br>
+                    <div class="btn g-signin2" data-onsuccess="onSignIn"></div>                  
+        
+                    <input type="submit" class="btn btn-lng btn-primary btn-block" value="Register"><br>
+        
+                    <small>Already have an account?</small><br>
+                    <button type="button" class="btn btn-sm" id="btnLogin" onclick="showLogin()">Login Here</button>
+                </form><br>
+            </div>
+        
+            <div id="loginPage" class="container">
+                <p id="message"></p>
+                <h2 class="h3 mb-3 font-weight-normal">Login here</h2>
+                <form id="loginForm" onsubmit="login(event)">
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" id="emailLogin" class="form-control" required autofocus><br>
+                    <label for="password">Password: </label>
+                    <input type="password" name="password" id="passwordLogin" class="form-control" required><br>
+    
+                    <small>or sign in with your google account</small><br>
+                    <div class="btn g-signin2" data-onsuccess="onSignIn" ></div>                                 
+        
+                    <input type="submit" class="btn btn-lng btn-primary btn-block" value="Login"><br><br>
+        
+                    <small>Don't have an account yet?</small><br>
+                    <button type="button" class="btn btn-sm" id="btnRegister" onclick="showRegister()">Register Here</button>
+                </form><br>
+            </div>
+        </section>
+
+    </div> 
+        <!-- scripts: googleOAuth, jQuery n Bootstrap -->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="main.js"></script>
 </body>
 </html>
