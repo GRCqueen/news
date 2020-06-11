@@ -1,5 +1,3 @@
-# news
-
 # News of Everything
 
 API : - newsapi.org
