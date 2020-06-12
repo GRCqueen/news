@@ -6,6 +6,7 @@ $(document).ready( _=> {
       $(this).hide();
     });
 
+
     $('#oldNews').click(function() {
         checked = !checked
     });
@@ -19,12 +20,14 @@ function auth(message) {
         $('#loginPage').hide()
         $('#registerPage').hide()
         $('#mainPage').show()
-        pieChart().show()
-        dekontaminasi().show()
         $('#btnLogout').show()
+        $('#covid').show()
+        pieChart()
+        dekontaminasi()        
     } else {
         showLogin()
         $("#message").append(message)
+        $('#covid').hide()
     }
 }
 
@@ -74,7 +77,7 @@ function login(event) {
 }
 
 function register(event) {
-    event.preventDefault();    
+    event.preventDefault();
     $.ajax({
         method: 'post',
         url: baseUrl + '/register',
@@ -109,7 +112,7 @@ function onSignIn(googleUser) {
             console.log('Google login is unavailable at the moment')
             signOut()
         }
-    })    
+    })
 }
 
 function signOut() {
@@ -156,7 +159,7 @@ function dekontaminasi(){
     console.log('sesuatu')
     $.ajax({
         method: "GET",
-        url: baseUrl+"/rayhan/news",
+        url: baseUrl + "/rayhan/news",
         headers: {
             access_token: localStorage.access_token
         },
@@ -167,7 +170,7 @@ function dekontaminasi(){
                 $("#covid-mark").append(`
                 <a href="${e.url}">${e.title}</a>
                 `)
-                
+
             });
         },
         error: (err) => {
@@ -192,7 +195,7 @@ function pieChart(){
                 labels.push(response.contaminated_update.regions[i].name)
                 data.push(response.contaminated_update.regions[i].numbers.infected)
             }
-            
+
             var ctxP = document.getElementById("pieChart").getContext('2d');
             var myPieChart = new Chart(ctxP, {
                 type: 'pie',
@@ -213,5 +216,5 @@ function pieChart(){
             console.log(err)
         }
     })
-    
+
 }
