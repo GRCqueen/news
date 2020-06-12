@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3000' //
+const baseUrl = 'https://quiet-beach-13272.herokuapp.com' // 'http://localhost:3000' //
 let checked = false
 
 $(document).ready( _=> {
