@@ -109,3 +109,34 @@ function signOut() {
     auth2.signOut().then( _=> console.log('User signed out.') );
     localStorage.removeItem('access_token');
 }
+
+//vh / vw satuan %
+function fetch(event) {
+    event.preventDefault()
+    console.log('xxx')
+    let searchQuery = $('#search').val()
+    $.ajax({
+        method:'GET',
+        url: baseUrl + '/api/news/'+ searchQuery,
+        headers: {
+            access_token: localStorage.access_token
+        },
+        success: function(response){
+            console.log(response.results)
+            $('#searchResults').empty()
+            response.results.forEach(news => {
+                $('#searchResults').append(
+            `<div class="card" style="width: 18rem; margin: 3vh;">
+                <img src="${news.urlToImage}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">${news.title}</h5>
+                  <p class="card-text">${news.description}</p>
+                  <a href="${news.url}" class="btn btn-primary">read now</a>
+                </div>
+              </div>`)
+        })},
+        error: _=> {
+            console.log('error')
+        }
+    })
+}
