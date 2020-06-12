@@ -28,6 +28,19 @@
             </div>
         </nav>
     
+        <section id="covid">
+            <marquee behavior="" direction="">
+                <div id="covid-mark" >
+    
+                </div>
+            </marquee>
+        </section>
+
+        <section>
+            <h2>ini pie chart</h2>
+            <canvas id="pieChart"></canvas>
+        </section>
+
         <section id="mainPage">
             <form id="searchForm" onsubmit="fetch(event)">
                 <label for="search">Search</label><br>
@@ -86,7 +99,11 @@
         <!-- scripts: googleOAuth, jQuery n Bootstrap -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips// ditaro sebelum Bootstrap--> 
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <!-- MDB core JavaScript // ditaro setelah Bootstrap-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>

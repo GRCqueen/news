@@ -19,6 +19,8 @@ function auth(message) {
         $('#loginPage').hide()
         $('#registerPage').hide()
         $('#mainPage').show()
+        pieChart().show()
+        dekontaminasi().show()
         $('#btnLogout').show()
     } else {
         showLogin()
@@ -149,4 +151,67 @@ function fetch(event) {
             console.log(err.responseJSON.msg)
         }
     })
+}
+function dekontaminasi(){
+    console.log('sesuatu')
+    $.ajax({
+        method: "GET",
+        url: baseUrl+"/rayhan/news",
+        headers: {
+            access_token: localStorage.access_token
+        },
+        success: (response) => {
+            console.log(response.covid_news)
+            console.log('sesuatu succses')
+            response.covid_news.forEach(e => {
+                $("#covid-mark").append(`
+                <a href="${e.url}">${e.title}</a>
+                `)
+                
+            });
+        },
+        error: (err) => {
+            console.log(err)
+        }
+    })
+}
+
+
+function pieChart(){
+    let labels = []
+    let data = []
+    $.ajax({
+        method: "GET",
+        url: baseUrl+ '/Rayhan/statistic',
+        headers: {
+            access_token: localStorage.access_token
+        },
+        success: (response) => {
+            console.log(response.contaminated_update.region)
+            for(let i = 0; i < 5; i++) {
+                labels.push(response.contaminated_update.regions[i].name)
+                data.push(response.contaminated_update.regions[i].numbers.infected)
+            }
+            
+            var ctxP = document.getElementById("pieChart").getContext('2d');
+            var myPieChart = new Chart(ctxP, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: data,
+                        backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
+                        hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774"]
+                    }]
+                },
+                options: {
+                    responsive: true
+                }
+            });
+        },
+        error: (err) => {
+            console.log(err)
+        }
+    })
+    
 }
