@@ -26,6 +26,10 @@ const errorHandler = (err, req, res, next) => {
         res.status(401).json({
             msg
         })
+    } else if (name == 'NoResults') {
+        res.status(404).json({
+            msg
+        })
     } else {
         console.log('errorHandler else');
 

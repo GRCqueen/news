@@ -1,9 +1,15 @@
-const baseUrl = 'http://localhost:3000' // 
+const baseUrl = 'https://quiet-beach-13272.herokuapp.com' // 'http://localhost:3000' //
+let checked = false
 
 $(document).ready( _=> {
     $("#message").click( _=> {
       $(this).hide();
-    });    
+    });
+
+    $('#oldNews').click(function() {
+        checked = !checked
+    });
+
     auth('Welcome back!')
 });
 
@@ -113,11 +119,15 @@ function signOut() {
 //vh / vw satuan %
 function fetch(event) {
     event.preventDefault()
-    console.log('xxx')
     let searchQuery = $('#search').val()
+    let url = baseUrl + '/api/news/'+ searchQuery
+
+    // CheckBox
+    if (checked) url = baseUrl + '/api/old/' + searchQuery
+    console.log(url)
     $.ajax({
         method:'GET',
-        url: baseUrl + '/api/news/'+ searchQuery,
+        url: url,
         headers: {
             access_token: localStorage.access_token
         },
@@ -135,8 +145,8 @@ function fetch(event) {
                 </div>
               </div>`)
         })},
-        error: _=> {
-            console.log('error')
+        error: err => {
+            console.log(err.responseJSON.msg)
         }
     })
 }

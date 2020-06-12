@@ -78,7 +78,7 @@ Error Response: Status Code 201
 
 ### GET /api/news/:query
 
-This will get an array of 10 news based on "query" request params.
+This will get an array of 10 news from <newsapi.org> based on "query" request params.
 
 Request header:
 ```javascript
@@ -106,8 +106,99 @@ Success Response: Status Code 200
       "content": "When you see a flat line on a graph, its tempting to think, Oh hey, at least the situation isnt getting any worse! But one of the common types of charts we see for COVID-19 is of new cases per day. I… [+2532 chars]"
     }
   ]
+}    
+```
+
+Error Response: Status Code 404
+```javascript
+{
+  "msg": "No articles is found try to use a different search query"
 }
-    
+```
+
+Error Response: Status Code 500
+```javascript
+{
+  "msg": "Internal server error"
+}
+```
+
+### GET /api/old/:query
+
+This will get an array of 10 old newspaper articles from <chroniclingamerica.loc.gov/> based on "query" request params.
+
+Request header:
+```javascript
+{
+  Content-Type: "application/json",
+  access_token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZGFkZWhhamFAbWFpbC5ydSIsImlhdCI6MTU5MTY5MzIxM30.8SE2lVhUU447a8H5Gex0SW7h1uOIeC9cotQs5k09myI"
+}
+```
+
+Success Response: Status Code 200
+```javascript
+{
+  "totalItems": 430,
+  "endIndex": 50,
+  "startIndex": 1,
+  "itemsPerPage": 20,
+  "items": [
+    {
+      "essay": [],
+      "place_of_publication": "Michigan City, Ind.",
+      "start_year": 1879,
+      "publisher": "Harry H. Francis",
+      "county": [
+        "Laporte"
+      ],
+      "edition": null,
+      "frequency": "Weekly",
+      "url": "https://chroniclingamerica.loc.gov/lccn/sn87056278.json",
+      "id": "/lccn/sn87056278/",
+      "subject": [
+        "Indiana--LaPorte County.--fast--(OCoLC)fst01719815",
+        "Indiana--Michigan City.--fast--(OCoLC)fst01213273",
+        "LaPorte County (Ind.)--Newspapers.",
+        "Michigan City (Ind.)--Newspapers."
+      ],
+      "city": [
+        "Michigan City"
+      ],
+      "language": [
+        "English"
+      ],
+      "title": "Michigan City dispatch.",
+      "holding_type": [
+        "Microfilm Service Copy",
+        "Online Resource"
+      ],
+      "end_year": 1882,
+      "alt_title": [],
+      "note": [
+        "Also published in a daily ed. called: The Evening dispatch.",
+        "Title from masthead."
+      ],
+      "lccn": "sn87056278",
+      "state": [
+        "Indiana"
+      ],
+      "place": [
+        "Indiana--Laporte--Michigan City"
+      ],
+      "country": "Indiana",
+      "type": "title",
+      "title_normal": "michigan city dispatch.",
+      "oclc": "16068606"
+    }
+  ]
+}    
+```
+
+Error Response: Status Code 404
+```javascript
+{
+  "msg": "No articles is found try to use a different search query"
+}
 ```
 
 Error Response: Status Code 500
