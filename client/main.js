@@ -131,7 +131,7 @@ function fetch(event) {
                 <div class="card-body">
                   <h5 class="card-title">${news.title}</h5>
                   <p class="card-text">${news.description}</p>
-                  <a href="${news.url}" class="btn btn-primary">read now</a>
+                  <a href="${news.url}" class="btn btn-primary" target="_blank">read now</a>
                 </div>
               </div>`)
         })},
