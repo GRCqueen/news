@@ -29,8 +29,14 @@
         </nav>
     
         <section id="mainPage">
-            <h1>MASUK PAK EKO!</h1>
-            <p>Berhasil login</p>
+            <form id="searchForm" onsubmit="fetch(event)">
+                <label for="search">Search</label><br>
+                <input type="search" name="search" id="search" class="form-control" required autofocus><br>
+                <input class="btn btn-primary" type="submit">
+            </form>
+            <div id="searchResults" class="container row">
+
+            </div>
         </section>
     
         <section id="loginRegister">
