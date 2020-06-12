@@ -8,7 +8,8 @@ class ggnaligController {
         .then(news => {
             let temp = []
             for (let i = 0; i < 10; i++) {
-                let idx = i*2
+                let idx = (i * 2) - 1 
+                if (i === 0) idx = 0
                 if (temp.includes(news.data.articles[idx].title)) {
                     continue
                 } else {
@@ -18,9 +19,10 @@ class ggnaligController {
             res.status(200).json({results: temp})
         })
         .catch(function (error) {
-            res.status(500).json(error)
-        })   
-    } 
+            error.msg = 'News API is currently unavailable'
+            next(error)
+        })
+    }
 }
 
 module.exports = ggnaligController
