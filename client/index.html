@@ -9,6 +9,7 @@
     <style>
         #loginPage { max-width: 400px; }
         #registerPage { max-width: 400px; }
+        #covid-mark { max-width: 20vw; }
     </style>
 </head>
 <body>
@@ -27,20 +28,34 @@
                 </ul>
             </div>
         </nav>
-    
+
+        <section id="covid">
+            <marquee behavior="" direction="">
+                <div id="covid-mark" >
+
+                </div>
+            </marquee>
+            <section>
+                <h2>Indonesia Covid-19 Statistics</h2>
+                <canvas id="pieChart"></canvas>
+            </section><br>
+        </section>
+
+
+
         <section id="mainPage">
             <form id="searchForm" onsubmit="fetch(event)">
                 <label for="search">Search</label><br>
                 <input type="search" name="search" id="search" class="form-control" required autofocus><br>
                 <input type="checkbox" id="oldNews">
-                <label for="oldNews"> Old Newspaper Articles </label><br>  
+                <label for="oldNews"> Old Newspaper Articles </label><br>
                 <input class="btn btn-primary" type="submit">
             </form>
             <div id="searchResults" class="container row">
 
             </div>
         </section>
-    
+
         <section id="loginRegister">
             <div id="registerPage" class="container">
                 <h2 class="h3 mb-3 font-weight-normal">Register here</h2>
@@ -51,17 +66,17 @@
                     <label for="password">Password: </label><br>
                     <small>Password must be longer than 8 characters</small>
                     <input type="password" name="password" id="passwordRegister"class="form-control" required><br>
-    
+
                     <small>or sign in with your google account</small><br>
-                    <div class="btn g-signin2" data-onsuccess="onSignIn"></div>                  
-        
+                    <div class="btn g-signin2" data-onsuccess="onSignIn"></div>
+
                     <input type="submit" class="btn btn-lng btn-primary btn-block" value="Register"><br>
-        
+
                     <small>Already have an account?</small><br>
                     <button type="button" class="btn btn-sm" id="btnLogin" onclick="showLogin()">Login Here</button>
                 </form><br>
             </div>
-        
+
             <div id="loginPage" class="container">
                 <p id="message"></p>
                 <h2 class="h3 mb-3 font-weight-normal">Login here</h2>
@@ -70,23 +85,27 @@
                     <input type="email" name="email" id="emailLogin" class="form-control" required autofocus><br>
                     <label for="password">Password: </label>
                     <input type="password" name="password" id="passwordLogin" class="form-control" required><br>
-    
+
                     <small>or sign in with your google account</small><br>
-                    <div class="btn g-signin2" data-onsuccess="onSignIn" ></div>                                 
-        
+                    <div class="btn g-signin2" data-onsuccess="onSignIn" ></div>
+
                     <input type="submit" class="btn btn-lng btn-primary btn-block" value="Login"><br><br>
-        
+
                     <small>Don't have an account yet?</small><br>
                     <button type="button" class="btn btn-sm" id="btnRegister" onclick="showRegister()">Register Here</button>
                 </form><br>
             </div>
         </section>
 
-    </div> 
+    </div>
         <!-- scripts: googleOAuth, jQuery n Bootstrap -->
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips// ditaro sebelum Bootstrap-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <!-- MDB core JavaScript // ditaro setelah Bootstrap-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.0/js/mdb.min.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
